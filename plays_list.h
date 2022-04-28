@@ -20,6 +20,7 @@ public:
     void print_list();
     void search_a_play(string new_title);
     double calculate_total_price() const noexcept;
+    double calculate_frequency() const noexcept;
 };
 
 #endif

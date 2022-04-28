@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <list>
 #include "play.h"
 #include "comedy.h"
@@ -59,9 +60,12 @@ void Plays_list::search_a_play(string new_title)
             if (del == 1)
             {
                 plays.erase(i);
+                system("cls");
+                cout << "Play deleted!";
             }
             if (del != 1 && del != 2)
             {
+                system("cls");
                 cout << "Wrong number!";
             }
         }
@@ -84,4 +88,19 @@ double Plays_list::calculate_total_price() const noexcept
     cout << "_________________" << endl;
     cout << "Total price: " << total_price << endl;
     return total_price;
+}
+
+double Plays_list::calculate_frequency() const noexcept
+{
+    double freq;
+    cout << "_________________" << endl;
+    for (const auto &play_ptr : plays)
+    {
+        cout << play_ptr->get_title() << " - " << play_ptr->get_frequency() << endl;
+        freq += play_ptr->get_frequency();
+    }
+    // double freq_to_return = ceil(freq / 7);
+    cout << "_________________" << endl;
+    cout << "Frequency of plays: " << freq << "per day.";
+    return freq;
 }

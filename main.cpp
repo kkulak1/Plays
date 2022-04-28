@@ -10,11 +10,11 @@ int main()
 {
     Plays_list plays_list;
 
-    Play play1("Manga", 50, 4);
-    Comedy comedy1("Laaala", 100, 5, 7);
+    // Play play1("Manga", 50, 4);
+    // Comedy comedy1("Laaala", 100, 5, 7);
 
-    cout << play1 << endl;
-    cout << comedy1;
+    // cout << play1 << endl;
+    // cout << comedy1;
 
     plays_list.add_play("Tara", 100, 3);
     plays_list.add_comedy_play("Lessy", 100, 6, 8);
@@ -27,7 +27,8 @@ int main()
         cout << "2. Search a play.\n";
         cout << "3. Price of plays.\n";
         cout << "4. Add play.\n";
-        cout << "5. Exit\n";
+        cout << "5. Get frequency in current week.\n";
+        cout << "6. Exit\n";
         int choice;
         cin >> choice;
 
@@ -66,6 +67,11 @@ int main()
             plays_list.print_list();
         }
         else if (choice == 5)
+        {
+            system("cls");
+            plays_list.calculate_frequency();
+        }
+        else if (choice == 6)
         {
             break;
         }
