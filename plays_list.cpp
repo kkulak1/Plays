@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 #include "play.h"
 #include "comedy.h"
 #include "drama.h"
@@ -29,4 +30,58 @@ void Plays_list::add_drama_play(string title, unsigned int price, unsigned int f
 {
     unique_ptr<Drama> added_drama = make_unique<Drama>(title, price, frequency, main_drama_thread);
     plays.push_back(move(added_drama));
+}
+
+void Plays_list::print_list()
+{
+    for (list<unique_ptr<Play>>::iterator i = plays.begin(); i != plays.end(); i++)
+    {
+        cout << (*i)->get_title() << endl;
+        // cout << (**i);
+    }
+}
+
+void Plays_list::search_a_play(string new_title)
+{
+    int check = 0;
+    for (list<unique_ptr<Play>>::iterator i = plays.begin(); i != plays.end(); i++)
+    {
+        if ((*i)->get_title() == new_title)
+        {
+            int del;
+            check++;
+            cout << "Play found!" << endl;
+            cout << (**i) << endl;
+            cout << "Do you want to delete it?" << endl
+                 << "1. yes" << endl
+                 << "2.no" << endl;
+            cin >> del;
+            if (del == 1)
+            {
+                plays.erase(i);
+            }
+            if (del != 1 && del != 2)
+            {
+                cout << "Wrong number!";
+            }
+        }
+        if (check == 0)
+        {
+            cout << "Play not found!";
+        }
+    }
+}
+
+double Plays_list::calculate_total_price() const noexcept
+{
+    double total_price = 0.0;
+    cout << "_________________" << endl;
+    for (const auto &play_ptr : plays)
+    {
+        cout << play_ptr->get_title() << " - " << play_ptr->get_price() << endl;
+        total_price += play_ptr->get_price();
+    }
+    cout << "_________________" << endl;
+    cout << "Total price: " << total_price << endl;
+    return total_price;
 }

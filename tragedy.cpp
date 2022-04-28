@@ -4,10 +4,26 @@
 
 using namespace std;
 
-Tragedy::Tragedy(string t, unsigned int p, unsigned int f, string n)
+Tragedy::Tragedy(string t, unsigned int p, unsigned int f, string n) : Play(t, p, f)
 {
-    title = t;
-    price = p;
-    frequency = f;
-    tragic_character_name = n;
+    set_tragic_charactesr_name(n);
+}
+
+string Tragedy::get_tragic_character_name()
+{
+    return tragic_character_name;
+}
+
+void Tragedy::set_tragic_charactesr_name(string new_tragic_character_name)
+{
+    tragic_character_name = new_tragic_character_name;
+}
+
+std::ostream &operator<<(std::ostream &os, const Tragedy &tragedyy)
+{
+    os << "Title: " << tragedyy.title << endl
+       << "Price: " << tragedyy.price << endl
+       << "Frequency: " << tragedyy.frequency << endl
+       << "Tragic character's name: " << tragedyy.tragic_character_name << endl;
+    return os;
 }

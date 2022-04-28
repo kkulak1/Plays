@@ -4,11 +4,8 @@
 
 using namespace std;
 
-Drama::Drama(string t, unsigned int p, unsigned int f, string mdt)
+Drama::Drama(string t, unsigned int p, unsigned int f, string mdt) : Play(t, p, f)
 {
-    set_title(t);
-    set_price(p);
-    set_frequency(f);
     set_main_drama_thread(mdt);
 }
 
